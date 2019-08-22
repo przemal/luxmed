@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: client_id=dd2dfcc2-1828-4add-abc4-245e14856595&grant_type=password&username=user&password=password
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '102'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 98a9f0b4-a878-46b4-8ed4-3fad360a5210; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: POST
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/token
+  response:
+    body:
+      string: '{"Errors": [{"ErrorCode": 2, "Message": "Invalid login or password.",
+        "AdditionalData": {}}]}'
+    headers:
+      Content-Length:
+      - '87'
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 22 Aug 2019 17:23:29 GMT
+      Server:
+      - Microsoft-IIS/7.5
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 409
+      message: Conflict
+version: 1

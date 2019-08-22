@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: GET
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/account/user
+  response:
+    body:
+      string: '{"UserName": "user", "FirstName": "John", "LastName": "Doe", "AccountId":
+        "2f2b85e0-e56a-4939-beff-a5fe9edb078f", "IsPasswordChangeRequired": false,
+        "IsRegulationsAccepted": true, "Links": [{"Rel": "regulations", "Href": "/PatientPortalMobileAPI/api/account/regulations",
+        "Method": "GET", "ApiVersion": 1}, {"Rel": "change_password", "Href": "/PatientPortalMobileAPI/api/account/user/password",
+        "Method": "PUT", "ApiVersion": 1}, {"Rel": "check_password", "Href": "/PatientPortalMobileAPI/api/account/user/password/verification",
+        "Method": "POST", "ApiVersion": 1}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '544'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:32 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

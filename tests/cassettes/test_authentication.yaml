@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: client_id=aeb7c10a-ae52-4593-86b2-195df87f4081&grant_type=password&username=user&password=password
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '110'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: POST
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/token
+  response:
+    body:
+      string: '{"access_token": "S3Cr3tT0k3n", "token_type": "bearer", "expires_in":
+        599, "refresh_token": "9f7fe8cb-74f6-eeee-896c-615bfd7ee589"}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '796'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:29 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

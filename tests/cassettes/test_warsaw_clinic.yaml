@@ -1,0 +1,183 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: GET
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/available-terms/reservation-filter?filter.CityId=1&filter.FromDate=2019-08-22
+  response:
+    body:
+      string: '{"Cities": [{"Id": 1, "Name": "Warszawa"}, {"Id": 3, "Name": "Krak\u00f3w"},
+        {"Id": 4, "Name": "\u0141\u00f3d\u017a"}, {"Id": 5, "Name": "Wroc\u0142aw"},
+        {"Id": 6, "Name": "D\u0119bica"}, {"Id": 8, "Name": "Pozna\u0144"}, {"Id":
+        10, "Name": "Bydgoszcz"}, {"Id": 12, "Name": "Bielsk Podlaski"}, {"Id": 17,
+        "Name": "Katowice"}, {"Id": 20, "Name": "Olsztyn"}], "Services": [{"Id": 3393,
+        "Name": "Rtg ko\u015bci \u0142\u00f3deczkowatej - prawej", "NameIncludeReferralType":
+        null}, {"Id": 3396, "Name": "Rtg palca/palc\u00f3w stopy AP + bok/skos - prawej",
+        "NameIncludeReferralType": null}, {"Id": 3808, "Name": "Gastroskopia", "NameIncludeReferralType":
+        null}, {"Id": 3816, "Name": "Kolonoskopia", "NameIncludeReferralType": null},
+        {"Id": 4279, "Name": "Rtg noso - gard\u0142a", "NameIncludeReferralType":
+        null}, {"Id": 4281, "Name": "Rtg punktowe zdj\u0119cie z\u0119ba", "NameIncludeReferralType":
+        null}, {"Id": 4282, "Name": "Rtg teleradiogram - cefalometria cyfrowa", "NameIncludeReferralType":
+        null}, {"Id": 4284, "Name": "Rtg zatok przynosowych", "NameIncludeReferralType":
+        null}, {"Id": 4285, "Name": "Rtg nosa  boczne", "NameIncludeReferralType":
+        null}, {"Id": 4286, "Name": "Rtg czaszki - PA + bok", "NameIncludeReferralType":
+        null}, {"Id": 4288, "Name": "Rtg czynno\u015bciowe staw\u00f3w skroniowo  \u017cuchwowych",
+        "NameIncludeReferralType": null}, {"Id": 4290, "Name": "Rtg kr\u0119gos\u0142upa
+        szyjnego", "NameIncludeReferralType": null}, {"Id": 4292, "Name": "Rtg czynno\u015bciowe
+        kr\u0119gos\u0142upa szyjnego", "NameIncludeReferralType": null}, {"Id": 4294,
+        "Name": "Rtg kr\u0119gos\u0142upa l\u0119d\u017awiowo  krzy\u017cowego AP
+        + Bok", "NameIncludeReferralType": null}, {"Id": 4295, "Name": "Rtg kr\u0119gos\u0142upa
+        AP na stoj\u0105co - (skolioza)", "NameIncludeReferralType": null}, {"Id":
+        4296, "Name": "Rtg kr\u0119gos\u0142upa l\u0119d\u017awiowo  krzy\u017cowego  skosy",
+        "NameIncludeReferralType": null}, {"Id": 4297, "Name": "Rtg czynno\u015bciowe
+        kr\u0119gos\u0142upa l\u0119d\u017awiowego", "NameIncludeReferralType": null},
+        {"Id": 4298, "Name": "Rtg ko\u015bci krzy\u017cowej i guzicznej", "NameIncludeReferralType":
+        null}, {"Id": 4299, "Name": "Rtg kr\u0119gos\u0142upa piersiowego", "NameIncludeReferralType":
+        null}, {"Id": 4300, "Name": "Mammografia", "NameIncludeReferralType": null},
+        {"Id": 4304, "Name": "Rtg \u017ceber (1 strona) w 2 skosach", "NameIncludeReferralType":
+        null}, {"Id": 4305, "Name": "Rtg mostka/boczne klatki piersiowej", "NameIncludeReferralType":
+        null}, {"Id": 4306, "Name": "Rtg obojczyka - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4307, "Name": "Rtg \u0142opatki - prawej", "NameIncludeReferralType":
+        null}, {"Id": 4311, "Name": "Rtg klatki piersiowej", "NameIncludeReferralType":
+        null}, {"Id": 4321, "Name": "Rtg jamy brzusznej - na le\u017c\u0105co", "NameIncludeReferralType":
+        null}, {"Id": 4322, "Name": "Rtg barku / ramienia AP - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4324, "Name": "Rtg barku / ramienia - osiowe - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4326, "Name": "Rtg \u0142okcia / przedramienia - prawego AP
+        + bok", "NameIncludeReferralType": null}, {"Id": 4327, "Name": "Rtg r\u0119ki
+        - wiek kostny", "NameIncludeReferralType": null}, {"Id": 4329, "Name": "Rtg
+        nadgarstka/d\u0142oni PA + bok/skos - lewego", "NameIncludeReferralType":
+        null}, {"Id": 4330, "Name": "Rtg obu nadgarstk\u00f3w/d\u0142oni PA + bok/skos",
+        "NameIncludeReferralType": null}, {"Id": 4331, "Name": "Rtg palec/palce PA
+        + bok / skos - prawej r\u0119ki", "NameIncludeReferralType": null}, {"Id":
+        4332, "Name": "Rtg miednicy i staw\u00f3w biodrowych", "NameIncludeReferralType":
+        null}, {"Id": 4333, "Name": "Rtg stawu biodrowego AP - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4334, "Name": "Rtg stawu biodrowego osiowe - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4335, "Name": "Rtg ko\u015bci udowej AP + bok - prawej", "NameIncludeReferralType":
+        null}, {"Id": 4337, "Name": "Rtg stawu kolanowego AP + bok - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4339, "Name": "Rtg rzepki osiowe - prawej", "NameIncludeReferralType":
+        null}, {"Id": 4341, "Name": "Rtg podudzia (goleni) AP + bok - prawego", "NameIncludeReferralType":
+        null}, {"Id": 4343, "Name": "Rtg stopy AP + bok/skos - prawej", "NameIncludeReferralType":
+        null}, {"Id": 4345, "Name": "Rtg stawu skokowo - goleniowego AP + bok - prawego",
+        "NameIncludeReferralType": null}, {"Id": 4350, "Name": "USG stawu barkowego",
+        "NameIncludeReferralType": null}, {"Id": 4351, "Name": "USG stawu \u0142okciowego",
+        "NameIncludeReferralType": null}, {"Id": 4353, "Name": "USG staw\u00f3w biodrowych",
+        "NameIncludeReferralType": null}, {"Id": 4354, "Name": "USG stawu kolanowego",
+        "NameIncludeReferralType": null}, {"Id": 4355, "Name": "USG stawu skokowego",
+        "NameIncludeReferralType": null}, {"Id": 4356, "Name": "USG wi\u0119zade\u0142,
+        mi\u0119\u015bni, drobnych staw\u00f3w", "NameIncludeReferralType": null},
+        {"Id": 4357, "Name": "USG tkanki podsk\u00f3rnej (t\u0142uszczaki, w\u0142\u00f3kniaki,
+        przepuklina brzuszna etc.)", "NameIncludeReferralType": null}, {"Id": 4359,
+        "Name": "Echokardiografia - USG serca", "NameIncludeReferralType": null},
+        {"Id": 4360, "Name": "USG tarczycy", "NameIncludeReferralType": null}, {"Id":
+        4361, "Name": "USG piersi", "NameIncludeReferralType": null}, {"Id": 4363,
+        "Name": "USG narz\u0105d\u00f3w moszny (j\u0105der)", "NameIncludeReferralType":
+        null}, {"Id": 4364, "Name": "USG \u015blinianek", "NameIncludeReferralType":
+        null}, {"Id": 4367, "Name": "USG jamy brzusznej", "NameIncludeReferralType":
+        null}, {"Id": 4368, "Name": "USG uk\u0142adu moczowego", "NameIncludeReferralType":
+        null}, {"Id": 4376, "Name": "USG ginekologiczne - transvaginalne", "NameIncludeReferralType":
+        null}, {"Id": 4387, "Name": "Konsultacja alergologa", "NameIncludeReferralType":
+        null}, {"Id": 4394, "Name": "Konsultacja chirurga dzieci", "NameIncludeReferralType":
+        null}, {"Id": 4406, "Name": "Konsultacja chirurga naczyniowego", "NameIncludeReferralType":
+        null}, {"Id": 4412, "Name": "Konsultacja chirurga og\u00f3lnego", "NameIncludeReferralType":
+        null}, {"Id": 4418, "Name": "Konsultacja chirurga onkologa", "NameIncludeReferralType":
+        null}, {"Id": 4424, "Name": "Konsultacja chirurga plastyka", "NameIncludeReferralType":
+        null}, {"Id": 4430, "Name": "Konsultacja proktologa", "NameIncludeReferralType":
+        null}, {"Id": 4436, "Name": "Konsultacja ortopedy", "NameIncludeReferralType":
+        null}, {"Id": 4448, "Name": "Konsultacja dermatologa", "NameIncludeReferralType":
+        null}, {"Id": 4453, "Name": "Konsultacja diabetologa", "NameIncludeReferralType":
+        null}, {"Id": 4461, "Name": "Konsultacja endokrynologa", "NameIncludeReferralType":
+        null}, {"Id": 4468, "Name": "Konsultacja gastroenterologa", "NameIncludeReferralType":
+        null}, {"Id": 4473, "Name": "Konsultacja ginekologa - endokrynologa", "NameIncludeReferralType":
+        null}, {"Id": 4480, "Name": "Konsultacja ginekologa", "NameIncludeReferralType":
+        null}, {"Id": 4486, "Name": "Konsultacja hematologa", "NameIncludeReferralType":
+        null}, {"Id": 4491, "Name": "Konsultacja hepatologiczna", "NameIncludeReferralType":
+        null}, {"Id": 4498, "Name": "Konsultacja lekarza chor\u00f3b zaka\u017anych",
+        "NameIncludeReferralType": null}, {"Id": 4502, "Name": "Konsultacja internisty",
+        "NameIncludeReferralType": null}, {"Id": 4510, "Name": "Konsultacja kardiologa",
+        "NameIncludeReferralType": null}, {"Id": 4522, "Name": "Konsultacja laryngologa",
+        "NameIncludeReferralType": null}, {"Id": 4528, "Name": "Konsultacja lekarza
+        rodzinnego", "NameIncludeReferralType": null}, {"Id": 4534, "Name": "Konsultacja
+        nefrologa", "NameIncludeReferralType": null}, {"Id": 4540, "Name": "Konsultacja
+        neurochirurga", "NameIncludeReferralType": null}, {"Id": 4549, "Name": "Konsultacja
+        neurologa", "NameIncludeReferralType": null}, {"Id": 4565, "Name": "Konsultacja
+        okulisty", "NameIncludeReferralType": null}, {"Id": 4572, "Name": "Konsultacja
+        onkologa", "NameIncludeReferralType": null}, {"Id": 4585, "Name": "Konsultacja
+        psychiatry", "NameIncludeReferralType": null}, {"Id": 4596, "Name": "Konsultacja
+        psychologa", "NameIncludeReferralType": null}, {"Id": 4598, "Name": "Konsultacja
+        pulmonologa", "NameIncludeReferralType": null}, {"Id": 4604, "Name": "Konsultacja
+        reumatologa", "NameIncludeReferralType": null}, {"Id": 4614, "Name": "Konsultacja
+        urologa", "NameIncludeReferralType": null}, {"Id": 4655, "Name": "Za\u0142o\u017cenie
+        Holtera EKG - w gabinecie", "NameIncludeReferralType": null}, {"Id": 4656,
+        "Name": "Za\u0142o\u017cenie Holtera RR - w gabinecie", "NameIncludeReferralType":
+        null}, {"Id": 4695, "Name": "Badanie EKG - spoczynkowe", "NameIncludeReferralType":
+        null}, {"Id": 4699, "Name": "Spirometria - pr\u00f3ba rozkurczowa", "NameIncludeReferralType":
+        null}, {"Id": 4700, "Name": "Spirometria", "NameIncludeReferralType": null},
+        {"Id": 4780, "Name": "Komputerowe pole widzenia", "NameIncludeReferralType":
+        null}, {"Id": 4781, "Name": "USG ga\u0142ek ocznych i oczodo\u0142\u00f3w",
+        "NameIncludeReferralType": null}, {"Id": 4786, "Name": "Audiometria impedancyjna
+        - z tympanometri\u0105 i ocen\u0105 odruch\u00f3w z mi\u0119\u015bnia strzemi\u0105czkowego
+        (AI)", "NameIncludeReferralType": null}, {"Id": 5788, "Name": "Konsultacja
+        alergologa - dzieci", "NameIncludeReferralType": null}, {"Id": 5817, "Name":
+        "Konsultacja dermatologa - dzieci", "NameIncludeReferralType": null}, {"Id":
+        5844, "Name": "Konsultacja dietetyka", "NameIncludeReferralType": null}, {"Id":
+        5854, "Name": "Konsultacja laryngologa - dzieci", "NameIncludeReferralType":
+        null}], "Clinics": [{"Id": 1, "Name": "LX Warszawa - Al. Jerozolimskie 65/79"},
+        {"Id": 2, "Name": "LX Warszawa - Domaniewska 41B (Budynek Jupiter - Przychodnia
+        D3 i D4)"}, {"Id": 4, "Name": "LX Warszawa - 17 Stycznia 49"}, {"Id": 13,
+        "Name": "LX Warszawa - Al. Jana Paw\u0142a II 78"}, {"Id": 19, "Name": "LX
+        Warszawa - Bobrowiecka 1"}, {"Id": 43, "Name": "LX Warszawa - Al. Jerozolimskie
+        162"}, {"Id": 44, "Name": "LX Warszawa - KEN 93"}, {"Id": 45, "Name": "LX
+        Warszawa - Stan\u00f3w Zjednoczonych 72"}, {"Id": 50, "Name": "LX Warszawa
+        - Chmielna 85/87"}, {"Id": 52, "Name": "LX Warszawa - Migda\u0142owa 4"},
+        {"Id": 56, "Name": "LX Warszawa - Pu\u0142awska 15"}, {"Id": 60, "Name": "LX
+        Warszawa - Szernera 3"}, {"Id": 66, "Name": "MR Warszawa - \u015aw. Barbary
+        6/8"}, {"Id": 67, "Name": "LX Warszawa - Nowogrodzka 45"}, {"Id": 74, "Name":
+        "MR Warszawa - Belgradzka 18"}, {"Id": 75, "Name": "MR Warszawa - Gr\u00f3jecka
+        186"}, {"Id": 76, "Name": "MR Warszawa - My\u015bliborska 95"}, {"Id": 77,
+        "Name": "MR Warszawa - Wroc\u0142awska 7A"}, {"Id": 78, "Name": "MR Warszawa
+        - \u017bwirki i Wigury 39"}, {"Id": 80, "Name": "MR Warszawa - Wrzeciono 10C"}],
+        "Doctors": [], "Languages": [{"Id": 11, "Name": "english"}, {"Id": 7, "Name":
+        "french"}, {"Id": 3, "Name": "german"}, {"Id": 6, "Name": "italian"}, {"Id":
+        10, "Name": "polish"}, {"Id": 4, "Name": "russian"}, {"Id": 5, "Name": "spanish"}],
+        "Payers": [{"Id": 10101, "IsFeeForService": false, "Name": "Acme Corporation"}],
+        "DefaultPayer": [{"Id": 10101, "IsFeeForService": false, "Name": "Acme Corporation"}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '39951'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:31 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
