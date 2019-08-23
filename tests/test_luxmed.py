@@ -20,8 +20,8 @@ def luxmed():
 
 
 @pytest.fixture(scope='module')
-def today():
-    return date.today()
+def from_date():
+    return date(year=2019, month=8, day=22)
 
 
 @pytest.mark.vcr()
@@ -38,28 +38,28 @@ def test_authentication(luxmed):
 
 
 @pytest.mark.vcr()
-def test_warsaw_city(luxmed, today):
-    assert luxmed.cities(from_date=today)[1] == 'Warszawa'
+def test_warsaw_city(luxmed, from_date):
+    assert luxmed.cities(from_date=from_date)[1] == 'Warszawa'
 
 
 @pytest.mark.vcr()
-def test_warsaw_clinic(luxmed, today):
-    assert luxmed.clinics(city_id=1, from_date=today)[1] == 'LX Warszawa - Al. Jerozolimskie 65/79'
+def test_warsaw_clinic(luxmed, from_date):
+    assert luxmed.clinics(city_id=1, from_date=from_date)[1] == 'LX Warszawa - Al. Jerozolimskie 65/79'
 
 
 @pytest.mark.vcr()
-def test_warsaw_allergist_doctor(luxmed, today):
-    assert luxmed.doctors(city_id=1, service_id=4387, from_date=today)[16772].startswith('HANNA')
+def test_warsaw_allergist_doctor(luxmed, from_date):
+    assert luxmed.doctors(city_id=1, service_id=4387, from_date=from_date)[16772].startswith('HANNA')
 
 
 @pytest.mark.vcr()
-def test_english_language(luxmed, today):
-    assert luxmed.languages(from_date=today)[11] == 'english'
+def test_english_language(luxmed, from_date):
+    assert luxmed.languages(from_date=from_date)[11] == 'english'
 
 
 @pytest.mark.vcr()
-def test_warsaw_allergist_service(luxmed, today):
-    assert luxmed.services(city_id=1, from_date=today)[4387] == 'Konsultacja alergologa'
+def test_warsaw_allergist_service(luxmed, from_date):
+    assert luxmed.services(city_id=1, from_date=from_date)[4387] == 'Konsultacja alergologa'
 
 
 @pytest.mark.vcr()
