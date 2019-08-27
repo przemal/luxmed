@@ -1,40 +1,21 @@
-from datetime import date
-
 import pytest
 
-from luxmed.errors import LuxMedAuthenticationError
 from luxmed.luxmed import LuxMed
 
 
-APP_UUID = '3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4'
-CLIENT_UUID = 'aeb7c10a-ae52-4593-86b2-195df87f4081'
-
-
 @pytest.fixture(scope='module')
-def luxmed():
-    return LuxMed(
+def luxmed(app_uuid, client_uuid):
+    luxmed_ = LuxMed(
         user_name='user',
         password='password',
-        app_uuid=APP_UUID,
-        client_uuid=CLIENT_UUID)
+        app_uuid=app_uuid,
+        client_uuid=client_uuid)
+    return luxmed_
 
 
-@pytest.fixture(scope='module')
-def from_date():
-    return date(year=2019, month=8, day=22)
-
-
-@pytest.mark.vcr()
-def test_failed_authentication():
-    luxmed = LuxMed(user_name='username', password='password')
-    with pytest.raises(LuxMedAuthenticationError):
-        luxmed._authenticate()
-
-
-@pytest.mark.vcr()
+@pytest.mark.vcr('../test_transport/test_authentication.yaml')
 def test_authentication(luxmed):
-    luxmed._authenticate()
-    assert luxmed.TOKEN_HEADER_NAME in luxmed._session.headers
+    luxmed._transport.authenticate()
 
 
 @pytest.mark.vcr()

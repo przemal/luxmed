@@ -1,0 +1,8 @@
+HOST = 'portalpacjenta.luxmed.pl'
+BASE_URL = f'https://{HOST}/PatientPortalMobileAPI/api'
+TOKEN_URL = f'{BASE_URL}/token'
+ACCOUNT_URL = f'{BASE_URL}/account'
+USER_URL = f'{ACCOUNT_URL}/user'
+VISITS_URL = f'{BASE_URL}/visits'
+VISIT_TERMS_URL = f'{VISITS_URL}/available-terms'
+VISIT_TERMS_RESERVATION_URL = f'{VISIT_TERMS_URL}/reservation-filter'

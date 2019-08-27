@@ -1,5 +1,6 @@
 import json
 from copy import deepcopy
+from datetime import date
 from typing import Dict
 from typing import Iterable
 from typing import List
@@ -88,6 +89,21 @@ def filter_response(response):
     # string body messes up diff causing CannotOverwriteExistingCassetteException
     response['body']['string'] = json.dumps(data).encode()
     return response
+
+
+@pytest.fixture(scope='module')
+def app_uuid():
+    return '3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4'
+
+
+@pytest.fixture(scope='module')
+def client_uuid():
+    return 'aeb7c10a-ae52-4593-86b2-195df87f4081'
+
+
+@pytest.fixture(scope='module')
+def from_date():
+    return date(year=2019, month=8, day=22)
 
 
 @pytest.fixture(scope='module')
