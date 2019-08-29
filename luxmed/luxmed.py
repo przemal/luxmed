@@ -1,5 +1,6 @@
 from datetime import date
 from typing import Dict
+from typing import List
 from typing import NamedTuple
 
 from luxmed.transformers import filter_args
@@ -26,8 +27,11 @@ class LuxMed:
             user_name=user_name, password=password,
             app_uuid=app_uuid, client_uuid=client_uuid, lang_code=lang_code)
 
-    def _visit_filters(self, category: str, **kwargs) -> Dict[int, str]:
-        return map_id_name(self._transport.get(VISIT_TERMS_RESERVATION_URL, params=filter_args(**kwargs))[category])
+    def _visit_filters(self, **kwargs) -> Dict:
+        return self._transport.get(VISIT_TERMS_RESERVATION_URL, params=filter_args(**kwargs))
+
+    def _mapped_visit_filters(self, category: str, **kwargs) -> Dict[int, str]:
+        return map_id_name(self._visit_filters(**kwargs)[category])
 
     def cities(self, from_date: date = None) -> Dict[int, str]:
         """Cities the service is available in.
@@ -35,24 +39,29 @@ class LuxMed:
         Args:
             from_date (date): A day in time at which the availability should be queried?? Defaults to the current date.
         """
-        return self._visit_filters('Cities', from_date=from_date)
+        return self._mapped_visit_filters('Cities', from_date=from_date)
 
     def clinics(self, city_id: int, from_date: date = None) -> Dict[int, str]:
         """Clinics available in the given city."""
-        return self._visit_filters('Clinics', city_id=city_id, from_date=from_date)
+        return self._mapped_visit_filters('Clinics', city_id=city_id, from_date=from_date)
 
     def doctors(self, city_id: int, service_id: int, clinic_id: int = None, from_date: date = None) -> Dict[int, str]:
         """Doctors available in the given city and providing specified service."""
-        return self._visit_filters(
+        return self._mapped_visit_filters(
             'Doctors', city_id=city_id, clinic_id=clinic_id, from_date=from_date, service_id=service_id)
 
     def languages(self, from_date: date = None) -> Dict[int, str]:
         """Languages the service is accessible in."""
-        return self._visit_filters('Languages', from_date=from_date)
+        return self._mapped_visit_filters('Languages', from_date=from_date)
+
+    def payers(self, city_id: int, service_id: int, clinic_id: int = None, from_date: date = None) -> List[NamedTuple]:
+        """Payers available for the given city and service."""
+        return underscored_named_tuple(self._visit_filters(
+            city_id=city_id, clinic_id=clinic_id, from_date=from_date, service_id=service_id)['Payers'])
 
     def services(self, city_id: int, clinic_id: int = None, from_date: date = None) -> Dict[int, str]:
         """Services available in the given city."""
-        return self._visit_filters('Services', city_id=city_id, clinic_id=clinic_id, from_date=from_date)
+        return self._mapped_visit_filters('Services', city_id=city_id, clinic_id=clinic_id, from_date=from_date)
 
     def user(self) -> NamedTuple:
         """User profile."""
