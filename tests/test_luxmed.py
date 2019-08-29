@@ -13,7 +13,7 @@ def luxmed(app_uuid, client_uuid):
     return luxmed_
 
 
-@pytest.mark.vcr('../test_transport/test_authentication.yaml')
+@pytest.mark.vcr('../test_transport/authenticated.yaml')
 def test_authentication(luxmed):
     luxmed._transport.authenticate()
 
@@ -38,16 +38,16 @@ def test_warsaw_allergist_service(luxmed, from_date):
     assert luxmed.services(city_id=1, from_date=from_date)[4387] == 'Konsultacja alergologa'
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr('city_clinics_services_doctors_payers.yaml')
 def test_warsaw_allergist_doctor(luxmed, from_date):
     assert luxmed.doctors(city_id=1, service_id=4387, from_date=from_date)[16772].startswith('HANNA')
 
 
-@pytest.mark.vcr('test_warsaw_allergist_doctor.yaml')
+@pytest.mark.vcr('city_clinics_services_doctors_payers.yaml')
 def test_warsaw_allergist_payers(luxmed, from_date):
     assert luxmed.payers(city_id=1, service_id=4387, from_date=from_date)[0].id == 10101
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr('user.yaml')
 def test_user(luxmed):
     assert luxmed.user().user_name == 'user'
