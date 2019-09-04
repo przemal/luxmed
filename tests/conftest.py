@@ -92,27 +92,27 @@ def filter_response(response):
     return response
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def app_uuid():
     return '3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4'
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def client_uuid():
     return 'aeb7c10a-ae52-4593-86b2-195df87f4081'
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def from_date():
     return date(year=2019, month=8, day=22)
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def vcr_cassette_dir():
     return str(Path(__file__).parent / 'cassettes')
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def vcr_config():
     return dict(
         before_record_request=filter_request,
