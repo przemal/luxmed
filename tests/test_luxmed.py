@@ -13,7 +13,7 @@ def luxmed(app_uuid, client_uuid):
     return luxmed_
 
 
-@pytest.mark.vcr('../test_transport/authenticated.yaml')
+@pytest.mark.vcr('authenticated.yaml')
 def test_authentication(luxmed):
     luxmed._transport.authenticate()
 

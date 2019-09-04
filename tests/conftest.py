@@ -1,6 +1,7 @@
 import json
 from copy import deepcopy
 from datetime import date
+from pathlib import Path
 from typing import Dict
 from typing import Iterable
 from typing import List
@@ -104,6 +105,11 @@ def client_uuid():
 @pytest.fixture(scope='module')
 def from_date():
     return date(year=2019, month=8, day=22)
+
+
+@pytest.fixture(scope='module')
+def vcr_cassette_dir():
+    return str(Path(__file__).parent / 'cassettes')
 
 
 @pytest.fixture(scope='module')
