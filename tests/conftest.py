@@ -7,7 +7,10 @@ from typing import Iterable
 from typing import List
 
 import pytest
+from vcr import VCR
 from vcr.filters import replace_post_data_parameters
+
+from luxmed.transport import LuxMedTransport
 
 
 FIELD_MASK = {
@@ -117,3 +120,16 @@ def vcr_config():
     return dict(
         before_record_request=filter_request,
         before_record_response=filter_response)
+
+
+@pytest.fixture(scope='session')
+def authenticated_transport(record_mode, vcr_cassette_dir, vcr_config):
+    transport = LuxMedTransport(
+        user_name='user',
+        password='password',
+        app_uuid=app_uuid,
+        client_uuid=client_uuid)
+    with VCR(cassette_library_dir=vcr_cassette_dir, record_mode=record_mode).\
+            use_cassette('authenticated.yaml', **vcr_config):
+        transport.authenticate()
+    yield transport

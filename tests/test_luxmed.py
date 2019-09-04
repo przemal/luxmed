@@ -4,18 +4,10 @@ from luxmed.luxmed import LuxMed
 
 
 @pytest.fixture(scope='module')
-def luxmed(app_uuid, client_uuid):
-    luxmed_ = LuxMed(
-        user_name='user',
-        password='password',
-        app_uuid=app_uuid,
-        client_uuid=client_uuid)
+def luxmed(authenticated_transport):
+    luxmed_ = LuxMed(user_name='', password='')
+    luxmed_._transport = authenticated_transport
     return luxmed_
-
-
-@pytest.mark.vcr('authenticated.yaml')
-def test_authentication(luxmed):
-    luxmed._transport.authenticate()
 
 
 @pytest.mark.vcr('cities_languages.yaml')
