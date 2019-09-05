@@ -1,6 +1,7 @@
 import json
 from copy import deepcopy
 from datetime import date
+from os import environ
 from pathlib import Path
 from typing import Dict
 from typing import Iterable
@@ -123,10 +124,20 @@ def vcr_config():
 
 
 @pytest.fixture(scope='session')
-def authenticated_transport(record_mode, vcr_cassette_dir, vcr_config):
+def credentials(record_mode):
+    user_name = environ.get('LUXMED_USER')
+    password = environ.get('LUXMED_PASS')
+    if record_mode != 'none' and not (user_name and password):
+        pytest.skip('Recording requires LUXMED_USER and LUXMED_PASS variables present in the environment.')
+    return user_name, password
+
+
+@pytest.fixture(scope='session')
+def authenticated_transport(credentials, record_mode, vcr_cassette_dir, vcr_config):
+    user_name, password = credentials
     transport = LuxMedTransport(
-        user_name='user',
-        password='password',
+        user_name=user_name,
+        password=password,
         app_uuid=app_uuid,
         client_uuid=client_uuid)
     with VCR(cassette_library_dir=vcr_cassette_dir, record_mode=record_mode).\

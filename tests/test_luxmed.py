@@ -1,6 +1,7 @@
 import pytest
 
 from luxmed.luxmed import LuxMed
+from tests.conftest import FIELD_MASK
 
 
 @pytest.fixture(scope='module')
@@ -41,5 +42,6 @@ def test_warsaw_allergist_payers(luxmed, from_date):
 
 
 @pytest.mark.vcr('user.yaml')
-def test_user(luxmed):
-    assert luxmed.user().user_name == 'user'
+def test_user(credentials, luxmed):
+    user_name, password = credentials
+    assert luxmed.user().user_name == user_name or FIELD_MASK['UserName']
