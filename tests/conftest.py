@@ -133,7 +133,7 @@ def credentials(record_mode):
 
 
 @pytest.fixture(scope='session')
-def authenticated_transport(credentials, record_mode, vcr_cassette_dir, vcr_config):
+def authenticated_transport(app_uuid, client_uuid, credentials, record_mode, vcr_cassette_dir, vcr_config):
     user_name, password = credentials
     transport = LuxMedTransport(
         user_name=user_name,
