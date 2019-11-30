@@ -1,0 +1,49 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '0'
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: DELETE
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/reserved/0
+  response:
+    body:
+      string: ''
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 22 Aug 2019 17:23:59 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

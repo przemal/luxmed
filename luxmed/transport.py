@@ -83,6 +83,9 @@ class LuxMedTransport:
             self.authenticate()
         return self._request(method, url, **kwargs)
 
+    def delete(self, url, **kwargs):
+        return self.request('DELETE', url, **kwargs)
+
     def get(self, url, **kwargs):
         return self.request('GET', url, **kwargs)
 

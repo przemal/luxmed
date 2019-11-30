@@ -35,3 +35,8 @@ def test_warsaw_internist_visit_reserve(visits, payer_details):
         clinic_id=1, doctor_id=10200, room_id=303, service_id=service_id,
         start_date_time='2019-08-22T09:00:00+02:00', payer_data=payer
     )
+
+
+@pytest.mark.vcr('visit_cancel.yaml')
+def test_visit_cancel(visits):
+    visits.cancel(0)

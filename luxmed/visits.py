@@ -52,6 +52,14 @@ class LuxMedVisits:
         data['PayerDetailsList'] = payer_details
         return self._transport.post(url, json=data)
 
+    def cancel(self, reservation_id: int):
+        """Cancels given appointment reservation ID.
+
+        Args:
+            reservation_id (int): Previously reserved appointment ID.
+        """
+        self._transport.delete('{}/{}'.format(RESERVED_VISITS_URL, reservation_id))
+
     def evaluate(self, *args, payer_details: List[Dict], **kwargs) -> Dict:
         """Evaluate given appointment.
 
