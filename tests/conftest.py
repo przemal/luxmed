@@ -16,7 +16,10 @@ from vcr import VCR
 from vcr.filters import replace_post_data_parameters
 
 from luxmed.transport import LuxMedTransport
+from luxmed.urls import VISIT_RESERVE_TEMPORARY_URL
+from luxmed.urls import VISIT_RESERVE_URL
 from luxmed.urls import VISIT_TERMS_URL
+from luxmed.urls import VISIT_TERMS_VALUATION_URL
 
 
 FIELD_MASK = {
@@ -74,7 +77,7 @@ def filter_request(request):
     if 'Authorization' in request.headers:
         request.headers['Authorization'] = 'bearer XYZ'
 
-    # protect payer ID
+    # protect payer
     if VISIT_TERMS_URL in request.uri:
         request.uri = re.sub(
             '(filter.PayerId=)(?:\d+)',
@@ -84,6 +87,27 @@ def filter_request(request):
     replace_post_data_parameters(request, {
         'username': 'user',
         'password': 'password'})
+
+    if request.method == 'POST' and request.body:
+        try:
+            data = json.loads(request.body)
+        except json.JSONDecodeError:
+            pass
+        else:
+            if (request.uri.startswith(VISIT_RESERVE_TEMPORARY_URL)
+                or request.uri.startswith(VISIT_TERMS_VALUATION_URL)) \
+                    and 'PayerDetailsList' in data:
+                payer_details_ = PAYER_DETAILS.copy()
+                payer_details_['ServaId'] = data['ServiceId']
+                data['PayerDetailsList'] = [payer_details_]
+
+            if request.uri.startswith(VISIT_RESERVE_URL) and 'PayerData' in data:
+                payer_details_ = PAYER_DETAILS.copy()
+                payer_details_['ServaId'] = data['ServiceId']
+                data['PayerData'] = payer_details_
+
+            request.body = json.dumps(data).encode()
+
     return request
 
 
@@ -137,6 +161,10 @@ def filter_response(response):
     if 'CorrelationId' in data:
         data['CorrelationId'] = str(uuid4())
 
+    # doctor appointment reservation
+    for visit in data.get('VisitTermVariants', []):
+        visit['ValuationDetail']['PayerData'] = PAYER_DETAILS
+
     # string body messes up diff causing CannotOverwriteExistingCassetteException
     response['body']['string'] = json.dumps(data).encode()
     return response
@@ -182,6 +210,11 @@ def payer_id(record_mode):
         except (KeyError, ValueError):
             raise pytest.skip('Recording requires payer ID present in the LUXMED_PAYER environment variable.')
     return PAYER['Id']
+
+
+@pytest.fixture(scope='session')
+def payer_details():
+    return PAYER_DETAILS
 
 
 @pytest.fixture(scope='session')

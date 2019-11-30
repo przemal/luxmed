@@ -85,3 +85,6 @@ class LuxMedTransport:
 
     def get(self, url, **kwargs):
         return self.request('GET', url, **kwargs)
+
+    def post(self, url, **kwargs):
+        return self.request('POST', url, **kwargs)

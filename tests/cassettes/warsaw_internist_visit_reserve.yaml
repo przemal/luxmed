@@ -1,0 +1,180 @@
+interactions:
+- request:
+    body: '{"ClinicId": 1, "DoctorId": 10200, "RoomId": 303, "ServiceId": 4502,
+      "StartDateTime": "2019-08-22T09:00:00+02:00", "IsAdditional": false, "ReferralRequiredByService":
+      false, "PayerDetailsList": [{"PayerId": 10101, "PayerName": "Acme Corporation",
+      "ContractId": 1000, "ProductInContractId": 1001, "ProductId": 1010, "BrandId":
+      1011, "ProductElementId": 1101, "ServaId": 4502, "ServaAppId": 0}]}'
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '474'
+      Content-Type:
+      - application/json
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: POST
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/temporary-reservation
+  response:
+    body:
+      string: '{"Id": 1234567890, "InformationMessages": [], "HasReferralRequired":
+        false, "MustTermOfReservedVisitBeChanged": false, "ReferralId": null, "Links":
+        [{"Rel": "delete_temporary_reservation", "Href": "/PatientPortalMobileAPI/api/visits/temporary-reservation/1234567890",
+        "Method": "DELETE", "ApiVersion": 1}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '286'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:40 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 201
+      message: Created
+- request:
+    body: '{"ClinicId": 1, "DoctorId": 10200, "RoomId": 303, "ServiceId": 4502,
+      "StartDateTime": "2019-08-22T09:00:00+02:00", "IsAdditional": false, "ReferralRequiredByService":
+      false, "PayerDetailsList": [{"PayerId": 10101, "PayerName": "Acme Corporation",
+      "ContractId": 1000, "ProductInContractId": 1001, "ProductId": 1010, "BrandId":
+      1011, "ProductElementId": 1101, "ServaId": 4502, "ServaAppId": 0}]}'
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '474'
+      Content-Type:
+      - application/json
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: POST
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/available-terms/valuations
+  response:
+    body:
+      string: '{"VisitTermVariants": [{"ValuationDetail": {"PayerData": {"PayerId":
+        10101, "PayerName": "Acme Corporation", "ContractId": 1000, "ProductInContractId":
+        1001, "ProductId": 1010, "BrandId": 1011, "ProductElementId": 1101, "ServaId":
+        0, "ServaAppId": 0}, "ValuationType": 1, "Price": 0.0}, "InfoMessage": "Package-covered
+        service", "PaymentMessage": "", "OptionMessage": "I do not have the required
+        referral", "WarningMessage": "", "CanBeReserve": true, "ReferralRequired":
+        false, "IsStomatology": false}], "OptionsQuestion": "Would you like to confirm
+        your appointment booking?", "IsReferralRequired": false}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '632'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:44 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"ClinicId": 1, "DoctorId": 10200, "RoomId": 303, "ServiceId": 4502,
+      "StartDateTime": "2019-08-22T09:00:00+02:00", "IsAdditional": false, "PayerData":
+      {"PayerId": 10101, "PayerName": "Acme Corporation", "ContractId": 1000, "ProductInContractId":
+      1001, "ProductId": 1010, "BrandId": 1011, "ProductElementId": 1101, "ServaId":
+      4502, "ServaAppId": 0}, "TemporaryReservationId": 1234567890}'
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '466'
+      Content-Type:
+      - application/json
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: POST
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/reserved
+  response:
+    body:
+      string: '{"PreparationInfo": {"IsPreparationRequired": false}, "ReservedVisitsLimitInfo":
+        {"HasPatientLimit": false, "CanReserve": true, "ReservedVisitsCount": null,
+        "MaxReservedVisitsCount": null, "Message": ""}, "SelfConfirmationInfo": {"IsAvailable":
+        false}, "OverbookingInfo": {"IsAvailable": false}}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '276'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:48 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 201
+      message: Created
+version: 1
