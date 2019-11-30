@@ -1,0 +1,53 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Api-Version:
+      - '2.0'
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: GET
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/available-terms?filter.CityId=1&filter.ServiceId=4502&filter.LanguageId=10&filter.PayerId=10101&filter.FromDate=2019-08-22&filter.ToDate=2019-08-28&filter.TimeOfDay=0
+  response:
+    body:
+      string: '{"AgregateAvailableVisitTerms": [], "AgregateAvailableAdditionalVisitTerms":
+        [], "SearchDateRange": {"FromDate": "2019-08-22T00:00:00+02:00", "ToDate":
+        "2019-08-28T00:00:00+02:00"}, "CorrelationId": "c15c549f-518f-4c4a-b96d-52967a6a3163"}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '228'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:31 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

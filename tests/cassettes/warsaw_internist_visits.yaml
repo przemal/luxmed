@@ -1,0 +1,109 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Api-Version:
+      - '2.0'
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: GET
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/visits/available-terms?filter.CityId=1&filter.ServiceId=4502&filter.LanguageId=10&filter.PayerId=10101&filter.FromDate=2019-08-22&filter.ToDate=2019-08-28&filter.TimeOfDay=0
+  response:
+    body:
+      string: '{"AgregateAvailableVisitTerms": [{"AvailableVisitsTermPresentation":
+        [{"ServiceId": 4502, "Clinic": {"Id": 1, "Name": "LX Warszawa - Jerozolimskie
+        65/79 (9 pietro)"}, "Doctor": {"Id": 1037, "Name": "b815ddbadacbc04e563fd09ef45173963f14a30d"},
+        "Impediment": {"IsImpediment": false, "ImpedimentText": ""}, "VisitDate":
+        {"StartDateTime": "2019-08-22T07:15:00+02:00", "FormattedDate": "02-12-2019
+        at 7:15 ", "EndDateTime": "2019-08-22T07:30:00+02:00"}, "VisitDateToChangeTerm":
+        {"StartDateTime": "2019-08-22T07:15:00+02:00", "FormattedDate": "22nd December
+        2019, Thu. at 7:15", "EndDateTime": "2019-08-22T07:30:00+02:00"}, "FormattedVisitHour":
+        "7:15", "IsFree": false, "RoomId": 142, "ScheduleId": 4825386, "ReferralRequiredByService":
+        false, "ReferralRequiredByProduct": false, "PayerDetailsList": [{"PayerId":
+        10101, "PayerName": "Acme Corporation", "ContractId": 1000, "ProductInContractId":
+        1001, "ProductId": 1010, "BrandId": 1011, "ProductElementId": 1101, "ServaId":
+        4502, "ServaAppId": 0}], "TimeOfDay": 1, "IsAdditional": false}, {"ServiceId":
+        4502, "Clinic": {"Id": 19, "Name": "LX Warszawa-Bobrowiecka1(parking od ul.Ludwizanki;mapka:https://goo.gl/4vCp9a)"},
+        "Doctor": {"Id": 17787, "Name": "d9613cfcbe3643ab1f91ac59f7a4ca1fd428392b"},
+        "Impediment": {"IsImpediment": false, "ImpedimentText": ""}, "VisitDate":
+        {"StartDateTime": "2019-08-22T07:15:00+02:00", "FormattedDate": "02-12-2019
+        at 7:15 ", "EndDateTime": "2019-08-22T07:30:00+02:00"}, "VisitDateToChangeTerm":
+        {"StartDateTime": "2019-08-22T07:15:00+02:00", "FormattedDate": "22nd August
+        2019, Thu. at 7:15", "EndDateTime": "2019-08-22T07:30:00+02:00"}, "FormattedVisitHour":
+        "7:15", "IsFree": false, "RoomId": 960, "ScheduleId": 4941305, "ReferralRequiredByService":
+        false, "ReferralRequiredByProduct": false, "PayerDetailsList": [{"PayerId":
+        10101, "PayerName": "Acme Corporation", "ContractId": 1000, "ProductInContractId":
+        1001, "ProductId": 1010, "BrandId": 1011, "ProductElementId": 1101, "ServaId":
+        4502, "ServaAppId": 0}], "TimeOfDay": 1, "IsAdditional": false}], "TimeOfDays":
+        [{"TimeOfDay": 1, "Count": 94, "Percent": 12}, {"TimeOfDay": 2, "Count": 520,
+        "Percent": 65}, {"TimeOfDay": 3, "Count": 188, "Percent": 23}], "VisitsCount":
+        802, "VisitDate": {"StartDateTime": "2019-08-22T07:15:00+02:00", "FormattedDate":
+        "Thu., 22nd August", "EndDateTime": "2019-08-22T07:30:00+02:00"}}], "AgregateAvailableAdditionalVisitTerms":
+        [{"AvailableVisitsTermPresentation": [{"ServiceId": 4502, "Clinic": {"Id":
+        45, "Name": "LX Warszawa - Stan\u00f3w Zjednoczonych 72"}, "Doctor": {"Id":
+        16233, "Name": "068f98c62f43a0fd12b31bcd5f35562016a648d7"}, "Impediment":
+        {"IsImpediment": false, "ImpedimentText": ""}, "VisitDate": {"StartDateTime":
+        "2019-08-23T07:30:00+02:00", "FormattedDate": "03-12-2019 at 7:30 ", "EndDateTime":
+        "2019-08-23T08:30:00+02:00"}, "VisitDateToChangeTerm": {"StartDateTime": "2019-08-23T07:30:00+02:00",
+        "FormattedDate": "23rd August 2019, Fri. at 7:30", "EndDateTime": "2019-08-23T08:30:00+02:00"},
+        "FormattedVisitHour": "7:30", "IsFree": false, "RoomId": 1029, "ScheduleId":
+        5173721, "ReferralRequiredByService": false, "ReferralRequiredByProduct":
+        false, "PayerDetailsList": [{"PayerId": 10101, "PayerName": "Acme Corporation",
+        "ContractId": 1000, "ProductInContractId": 1001, "ProductId": 1010, "BrandId":
+        1011, "ProductElementId": 1101, "ServaId": 4502, "ServaAppId": 0}], "TimeOfDay":
+        1, "IsAdditional": true}, {"ServiceId": 4502, "Clinic": {"Id": 4, "Name":
+        "LX Warszawa - ul. KOR 49 (dawniej 17 Stycznia) w bud.Porty Lotnicze.Parking
+        p\u0142atny"}, "Doctor": {"Id": 1037, "Name": "b815ddbadacbc04e563fd09ef45173963f14a30d"},
+        "Impediment": {"IsImpediment": false, "ImpedimentText": ""}, "VisitDate":
+        {"StartDateTime": "2019-08-23T14:00:00+02:00", "FormattedDate": "03-12-2019
+        at 14:00 ", "EndDateTime": "2019-08-23T15:00:00+02:00"}, "VisitDateToChangeTerm":
+        {"StartDateTime": "2019-08-23T14:00:00+02:00", "FormattedDate": "23rd August
+        2019, Fri. at 14:00", "EndDateTime": "2019-08-23T15:00:00+02:00"}, "FormattedVisitHour":
+        "14:00", "IsFree": false, "RoomId": 38, "ScheduleId": 1228899, "ReferralRequiredByService":
+        false, "ReferralRequiredByProduct": false, "PayerDetailsList": [{"PayerId":
+        10101, "PayerName": "Acme Corporation", "ContractId": 1000, "ProductInContractId":
+        1001, "ProductId": 1010, "BrandId": 1011, "ProductElementId": 1101, "ServaId":
+        4502, "ServaAppId": 0}], "TimeOfDay": 2, "IsAdditional": true}], "TimeOfDays":
+        [{"TimeOfDay": 1, "Count": 1, "Percent": 50}, {"TimeOfDay": 2, "Count": 1,
+        "Percent": 50}], "VisitsCount": 2, "VisitDate": {"StartDateTime": "2019-08-23T07:30:00+02:00",
+        "FormattedDate": "Fri., 23rd August", "EndDateTime": "2019-08-23T08:30:00+02:00"}}],
+        "SearchDateRange": {"FromDate": "2019-08-22T00:00:00+02:00", "ToDate": "2019-08-28T00:00:00+02:00"},
+        "CorrelationId": "75486fd9-09b2-4eb4-b1bc-e7caa469e14d"}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '765842'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:31 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

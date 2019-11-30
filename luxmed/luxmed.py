@@ -9,6 +9,7 @@ from luxmed.transformers import underscored_named_tuple
 from luxmed.transport import LuxMedTransport
 from luxmed.urls import USER_URL
 from luxmed.urls import VISIT_TERMS_RESERVATION_URL
+from luxmed.visits import LuxMedVisits
 
 
 class LuxMed:
@@ -26,6 +27,7 @@ class LuxMed:
         self._transport = LuxMedTransport(
             user_name=user_name, password=password,
             app_uuid=app_uuid, client_uuid=client_uuid, lang_code=lang_code)
+        self.visits = LuxMedVisits(self._transport)
 
     def _visit_filters(self, **kwargs) -> Dict:
         return self._transport.get(VISIT_TERMS_RESERVATION_URL, params=filter_args(**kwargs))

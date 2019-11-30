@@ -1,17 +1,22 @@
+import hashlib
 import json
+import re
 from copy import deepcopy
 from datetime import date
+from itertools import chain
 from os import environ
 from pathlib import Path
 from typing import Dict
 from typing import Iterable
 from typing import List
+from uuid import uuid4
 
 import pytest
 from vcr import VCR
 from vcr.filters import replace_post_data_parameters
 
 from luxmed.transport import LuxMedTransport
+from luxmed.urls import VISIT_TERMS_URL
 
 
 FIELD_MASK = {
@@ -27,6 +32,18 @@ PAYER = {
     'Id': 10101,
     'IsFeeForService': False,
     'Name': 'Acme Corporation'}
+
+
+PAYER_DETAILS = {
+    'PayerId': PAYER['Id'],
+    'PayerName': PAYER['Name'],
+    'ContractId': 1000,
+    'ProductInContractId': 1001,
+    'ProductId': 1010,
+    'BrandId': 1011,
+    'ProductElementId': 1101,
+    'ServaId': 0,  # requested service id
+    'ServaAppId': 0}
 
 
 def sort_by_key(data: List[Dict], key: str = 'Id') -> Iterable:
@@ -56,6 +73,14 @@ def filter_request(request):
     request = deepcopy(request)  # do not destroy the original request
     if 'Authorization' in request.headers:
         request.headers['Authorization'] = 'bearer XYZ'
+
+    # protect payer ID
+    if VISIT_TERMS_URL in request.uri:
+        request.uri = re.sub(
+            '(filter.PayerId=)(?:\d+)',
+            r'\g<1>{}'.format(PAYER['Id']),
+            request.uri)
+
     replace_post_data_parameters(request, {
         'username': 'user',
         'password': 'password'})
@@ -91,6 +116,27 @@ def filter_response(response):
         except KeyError:
             pass
 
+    # doctor appointments
+    for key in ('AgregateAvailableVisitTerms', 'AgregateAvailableAdditionalVisitTerms'):
+        if key not in data:
+            continue
+        data[key] = data[key][:2]
+        for visits_index in range(len(data[key])):
+            data[key][visits_index]['AvailableVisitsTermPresentation'] = \
+                data[key][visits_index]['AvailableVisitsTermPresentation'][:2]
+
+    for visits in chain(
+            data.get('AgregateAvailableVisitTerms', []),
+            data.get('AgregateAvailableAdditionalVisitTerms', [])):
+        for visit in visits['AvailableVisitsTermPresentation']:
+            visit['Doctor']['Name'] = hashlib.sha1(visit['Doctor']['Name'].encode()).hexdigest()
+            payer_details_ = PAYER_DETAILS.copy()
+            payer_details_['ServaId'] = visit['ServiceId']
+            visit['PayerDetailsList'] = [payer_details_]
+
+    if 'CorrelationId' in data:
+        data['CorrelationId'] = str(uuid4())
+
     # string body messes up diff causing CannotOverwriteExistingCassetteException
     response['body']['string'] = json.dumps(data).encode()
     return response
@@ -112,6 +158,11 @@ def from_date():
 
 
 @pytest.fixture(scope='session')
+def to_date():
+    return date(year=2019, month=8, day=28)
+
+
+@pytest.fixture(scope='session')
 def vcr_cassette_dir():
     return str(Path(__file__).parent / 'cassettes')
 
@@ -121,6 +172,16 @@ def vcr_config():
     return dict(
         before_record_request=filter_request,
         before_record_response=filter_response)
+
+
+@pytest.fixture(scope='session')
+def payer_id(record_mode):
+    if record_mode != 'none':
+        try:
+            return int(environ['LUXMED_PAYER'])
+        except (KeyError, ValueError):
+            raise pytest.skip('Recording requires payer ID present in the LUXMED_PAYER environment variable.')
+    return PAYER['Id']
 
 
 @pytest.fixture(scope='session')
