@@ -38,10 +38,10 @@ def test_warsaw_allergist_doctor(luxmed, from_date):
 
 @pytest.mark.vcr('city_clinics_services_doctors_payers.yaml')
 def test_warsaw_allergist_payers(luxmed, from_date):
-    assert luxmed.payers(city_id=1, service_id=4387, from_date=from_date)[0].id == 10101
+    assert luxmed.payers(city_id=1, service_id=4387, from_date=from_date)[0]['Id'] == 10101
 
 
 @pytest.mark.vcr('user.yaml')
 def test_user(credentials, luxmed):
     user_name, password = credentials
-    assert luxmed.user().user_name == user_name or FIELD_MASK['UserName']
+    assert luxmed.user()['UserName'] == user_name or FIELD_MASK['UserName']

@@ -1,6 +1,4 @@
-from collections import namedtuple
 from datetime import date
-from typing import Any
 from typing import Dict
 from typing import Iterator
 from typing import List
@@ -8,7 +6,6 @@ from typing import Tuple
 from typing import Union
 
 from inflection import camelize
-from inflection import underscore
 
 
 FILTER_DEFAULTS = dict(from_date=lambda: date.today().isoformat())
@@ -53,21 +50,3 @@ def map_id_name(data: List[Dict]) -> Dict[int, str]:
     for item in data:
         mapped[item['Id']] = item['Name']
     return mapped
-
-
-def underscored_named_tuple(data: Any) -> Any:
-    """Recursively converts all key names from camel case to underscore and replaces dictionaries with named tuples.
-
-    Args:
-        data: Any object.
-
-    Returns:
-        Transformed object (or original one, depending on the given type).
-    """
-    if isinstance(data, Dict):
-        for key in list(data.keys()):
-            data[underscore(key)] = underscored_named_tuple(data.pop(key))
-        return namedtuple('Item', data.keys())(**data)
-    elif isinstance(data, List):
-        return [underscored_named_tuple(item) for item in data]
-    return data

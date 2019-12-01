@@ -15,8 +15,8 @@ from luxmed import LuxMed
 
 luxmed = LuxMed(user_name='user', password='pass')
 
-# account owner first name
-print(luxmed.user().first_name)
+# user profile data
+print(luxmed.user())
 
 # cities the service is available in
 print(', '.join(luxmed.cities().values()))

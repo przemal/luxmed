@@ -1,11 +1,9 @@
 from datetime import date
 from typing import Dict
 from typing import List
-from typing import NamedTuple
 
 from luxmed.transformers import filter_args
 from luxmed.transformers import map_id_name
-from luxmed.transformers import underscored_named_tuple
 from luxmed.transport import LuxMedTransport
 from luxmed.urls import USER_URL
 from luxmed.urls import VISIT_TERMS_RESERVATION_URL
@@ -56,15 +54,15 @@ class LuxMed:
         """Languages the service is accessible in."""
         return self._mapped_visit_filters('Languages', from_date=from_date)
 
-    def payers(self, city_id: int, service_id: int, clinic_id: int = None, from_date: date = None) -> List[NamedTuple]:
+    def payers(self, city_id: int, service_id: int, clinic_id: int = None, from_date: date = None) -> List[Dict]:
         """Payers available for the given city and service."""
-        return underscored_named_tuple(self._visit_filters(
-            city_id=city_id, clinic_id=clinic_id, from_date=from_date, service_id=service_id)['Payers'])
+        return self._visit_filters(
+            city_id=city_id, clinic_id=clinic_id, from_date=from_date, service_id=service_id)['Payers']
 
     def services(self, city_id: int, clinic_id: int = None, from_date: date = None) -> Dict[int, str]:
         """Services available in the given city."""
         return self._mapped_visit_filters('Services', city_id=city_id, clinic_id=clinic_id, from_date=from_date)
 
-    def user(self) -> NamedTuple:
+    def user(self) -> Dict:
         """User profile."""
-        return underscored_named_tuple(self._transport.get(USER_URL))
+        return self._transport.get(USER_URL)
