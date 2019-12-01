@@ -45,3 +45,8 @@ def test_warsaw_allergist_payers(luxmed, from_date):
 def test_user(credentials, luxmed):
     user_name, password = credentials
     assert luxmed.user()['UserName'] == user_name or FIELD_MASK['UserName']
+
+
+@pytest.mark.vcr('user_permissions.yaml')
+def test_user_permissions(luxmed):
+    assert 'Visits' in luxmed.user_permissions()

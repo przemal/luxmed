@@ -6,6 +6,7 @@ from luxmed.transformers import filter_args
 from luxmed.transformers import map_id_name
 from luxmed.transport import LuxMedTransport
 from luxmed.urls import USER_URL
+from luxmed.urls import USER_PERMISSIONS_URL
 from luxmed.urls import VISIT_TERMS_RESERVATION_URL
 from luxmed.visits import LuxMedVisits
 
@@ -66,3 +67,7 @@ class LuxMed:
     def user(self) -> Dict:
         """User profile."""
         return self._transport.get(USER_URL)
+
+    def user_permissions(self) -> Dict:
+        """User module permissions/restrictions."""
+        return self._transport.get(USER_PERMISSIONS_URL)
