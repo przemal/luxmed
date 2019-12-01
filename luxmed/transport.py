@@ -1,3 +1,4 @@
+from json import JSONDecodeError
 from typing import Dict
 from typing import List
 from typing import Union
@@ -57,7 +58,10 @@ class LuxMedTransport:
             raise LuxMedConnectionError('Connection failed') from error
         except Timeout as error:
             raise LuxMedTimeoutError('Request timed out') from error
-        return response.json()
+        try:
+            return response.json()
+        except JSONDecodeError:
+            return
 
     def authenticate(self):
         """Authenticates session with the credentials given during initialization."""
@@ -68,7 +72,7 @@ class LuxMedTransport:
             'password': self.password})
         self._session.headers[self.TOKEN_HEADER_NAME] = token['token_type'] + ' ' + token['access_token']
 
-    def request(self, method: str, url: str, **kwargs) -> Union[Dict, List]:
+    def request(self, method: str, url: str, **kwargs) -> Union[Dict, List, None]:
         """Sends request via given HTTP method to a URL with all the required headers set.
 
         Args:
@@ -77,7 +81,7 @@ class LuxMedTransport:
             **kwargs: Remaining request parameters forwarded to the underlying `requests.request` method.
 
         Returns:
-            Parsed JSON.
+            Parsed JSON or None when not available.
         """
         if self.TOKEN_HEADER_NAME not in self._session.headers:
             self.authenticate()
