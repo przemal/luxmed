@@ -3,6 +3,9 @@ import json
 import re
 from copy import deepcopy
 from datetime import date
+from datetime import datetime
+from datetime import timedelta
+from datetime import timezone
 from itertools import chain
 from os import environ
 from pathlib import Path
@@ -22,6 +25,14 @@ from luxmed.urls import VISIT_TERMS_URL
 from luxmed.urls import VISIT_TERMS_VALUATION_URL
 
 
+DATE_TIME = datetime(year=2012, month=12, day=12, hour=12, minute=12, second=12, tzinfo=timezone.utc)
+
+
+DATE_TIME_FORMATS = (
+    '%Y-%m-%dT%H:%M:%S%z',  # ISO-8601
+    '%d %b %Y')
+
+
 FIELD_MASK = {
     'access_token': 'S3Cr3tT0k3n',
     'refresh_token': '9f7fe8cb-74f6-eeee-896c-615bfd7ee589',
@@ -29,6 +40,9 @@ FIELD_MASK = {
     'UserName': 'user',
     'FirstName': 'John',
     'LastName': 'Doe'}
+
+
+ID_RANGE = range(10100, 11000)
 
 
 PAYER = {
@@ -69,6 +83,42 @@ def first_words(sentence: str, limit: int = 1) -> str:
 def shrink_words_in_key(list_: List[Dict], key: str = 'Name', to: int = 1) -> Iterable[Dict]:
     for dict_ in list_:
         yield {**dict_, key: first_words(dict_[key], limit=to)}
+
+
+def replace_pattern_in_values(data: Dict, pattern: str, replacement: str, pattern_flags: int = re.IGNORECASE):
+    """Replace given pattern with a replacement string in all values."""
+    replace = re.compile(pattern, flags=pattern_flags)
+    for key, value in data.items():
+        try:
+            new_value, replaced_count = replace.subn(replacement, value)
+        except TypeError:
+            continue
+        if replaced_count > 0:
+            data[key] = new_value
+
+
+def replace_with_datetime(source: str, target: datetime) -> str:
+    """Replace date and/or time string with custom target while preserving source format.
+
+
+    Args:
+        source (str): Date and/or time string to be replaced.
+        target (datetime): Replace with this.
+
+    Returns:
+        Date and/or time string.
+
+    Raises:
+        ValueError: When source datetime format is unknown.
+    """
+    for format_ in DATE_TIME_FORMATS:
+        try:
+            datetime.strptime(source, format_)
+        except ValueError:
+            continue
+        else:
+            return target.strftime(format_)
+    raise ValueError('Unknown datetime format.')
 
 
 def filter_request(request):
@@ -165,6 +215,24 @@ def filter_response(response):
     for visit in data.get('VisitTermVariants', []):
         visit['ValuationDetail']['PayerData'] = PAYER_DETAILS
 
+    # examination results
+    try:
+        data['MedicalExaminationsResults'] = data['MedicalExaminationsResults'][:2]
+    except (KeyError, TypeError):  # TypeError is raised for user permissions data
+        pass
+    else:
+        id_range = iter(ID_RANGE)
+        for examination in data['MedicalExaminationsResults']:
+            # protect examination ID
+            examination_id = str(next(id_range))
+            examination['MedicalExaminationId'] = examination_id
+            for link in chain(examination['DownloadLinks'], examination['Links']):
+                replace_pattern_in_values(link, '[0-9]{5,10}', examination_id)
+
+            # change examination date
+            for name, date_time in examination['Date'].items():
+                examination['Date'][name] = replace_with_datetime(date_time, DATE_TIME)
+
     # string body messes up diff causing CannotOverwriteExistingCassetteException
     response['body']['string'] = json.dumps(data).encode()
     return response
@@ -188,6 +256,16 @@ def from_date():
 @pytest.fixture(scope='session')
 def to_date():
     return date(year=2019, month=8, day=28)
+
+
+@pytest.fixture(scope='session')
+def today():
+    return date(year=2019, month=8, day=22)
+
+
+@pytest.fixture(scope='session')
+def year_ago(today):
+    return today - timedelta(days=365)
 
 
 @pytest.fixture(scope='session')

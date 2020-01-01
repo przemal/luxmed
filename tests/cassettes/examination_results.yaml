@@ -1,0 +1,70 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept-Language:
+      - en
+      Authorization:
+      - bearer XYZ
+      Connection:
+      - Keep-Alive
+      Custom-User-Agent:
+      - Patient Portal; 3.17.0; 3a0cab8a-84f2-4fce-aff3-ddd623e0c4f4; Android; 28;
+        generic_x86 Android SDK built for x86
+      Host:
+      - portalpacjenta.luxmed.pl
+      User-Agent:
+      - okhttp/3.11.0
+      x-api-client-identifier:
+      - Android
+    method: GET
+    uri: https://portalpacjenta.luxmed.pl/PatientPortalMobileAPI/api/medical-examinations-results?filter.FromDate=2018-08-22&filter.ToDate=2019-08-22
+  response:
+    body:
+      string: '{"MedicalExaminationsResults": [{"MedicalExaminationId": "10100", "ExaminationsNames":
+        ["Morfologia + p\u0142ytki + rozmaz automatyczny"], "Date": {"DateTime": "2012-12-12T12:12:12+0000",
+        "FormattedDate": "12 Dec 2012"}, "AvailabilityInfo": {"IsAvailable": true,
+        "UnavailableMessage": ""}, "IsInternalResult": true, "DownloadLinks": [{"FileName":
+        "medical_examination_10100.pdf", "FileExtension": ".pdf", "Rel": "examination-result-document",
+        "Href": "/PatientPortalMobileAPI/api/medical-examinations-results/internal/10100/document",
+        "Method": "GET", "ApiVersion": 1}], "Links": [{"Rel": "examination-result-details",
+        "Href": "/PatientPortalMobileAPI/api/medical-examinations-results/internal/10100",
+        "Method": "GET", "ApiVersion": 1}, {"FileName": "medical_examination_10100.pdf",
+        "FileExtension": ".pdf", "Rel": "examination-result-document", "Href": "/PatientPortalMobileAPI/api/medical-examinations-results/internal/10100/document",
+        "Method": "GET", "ApiVersion": 1}]}, {"MedicalExaminationId": "10101", "ExaminationsNames":
+        ["HCV Ab / przeciwcia\u0142a"], "Date": {"DateTime": "2012-12-12T12:12:12+0000",
+        "FormattedDate": "12 Dec 2012"}, "AvailabilityInfo": {"IsAvailable": true,
+        "UnavailableMessage": ""}, "IsInternalResult": true, "DownloadLinks": [{"FileName":
+        "medical_examination_10101.pdf", "FileExtension": ".pdf", "Rel": "examination-result-document",
+        "Href": "/PatientPortalMobileAPI/api/medical-examinations-results/internal/10101/document",
+        "Method": "GET", "ApiVersion": 1}], "Links": [{"Rel": "examination-result-details",
+        "Href": "/PatientPortalMobileAPI/api/medical-examinations-results/internal/10101",
+        "Method": "GET", "ApiVersion": 1}, {"FileName": "medical_examination_10101.pdf",
+        "FileExtension": ".pdf", "Rel": "examination-result-document", "Href": "/PatientPortalMobileAPI/api/medical-examinations-results/internal/10101/document",
+        "Method": "GET", "ApiVersion": 1}]}], "SearchDateRange": {"FromDate": "2018-08-22T00:00:00+02:00",
+        "ToDate": "2019-08-22T00:00:00+02:00"}}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '5499'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Aug 2019 17:23:32 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/7.5
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -2,6 +2,7 @@ from datetime import date
 from typing import Dict
 from typing import List
 
+from luxmed.examination import LuxMedExamination
 from luxmed.transformers import filter_args
 from luxmed.transformers import map_id_name
 from luxmed.transport import LuxMedTransport
@@ -26,6 +27,7 @@ class LuxMed:
         self._transport = LuxMedTransport(
             user_name=user_name, password=password,
             app_uuid=app_uuid, client_uuid=client_uuid, lang_code=lang_code)
+        self.examination = LuxMedExamination(self._transport)
         self.visits = LuxMedVisits(self._transport)
 
     def _visit_filters(self, **kwargs) -> Dict:
