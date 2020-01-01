@@ -1,5 +1,4 @@
 from datetime import date
-from datetime import timedelta
 from typing import Dict
 from typing import Iterator
 
@@ -9,6 +8,7 @@ from luxmed.transport import LuxMedTransport
 from luxmed.urls import BASE_URL
 from luxmed.urls import EXAMINATION_RESULTS_URL
 from luxmed.utils import find_link_rel
+from luxmed.utils import year_ago
 
 
 class LuxMedExaminationResult(LuxMedReadOnlyMapping):
@@ -35,7 +35,7 @@ class LuxMedExamination:
             to_date (date, optional): Show results until this date. Defaults to today.
         """
         if not from_date:
-            from_date = date.today() - timedelta(days=366)
+            from_date = year_ago()
         if not to_date:
             to_date = date.today()
 

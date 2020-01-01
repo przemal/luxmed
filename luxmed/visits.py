@@ -21,6 +21,7 @@ from luxmed.urls import VISIT_RESERVE_TEMPORARY_URL
 from luxmed.urls import VISIT_RESERVE_URL
 from luxmed.urls import VISIT_TERMS_URL
 from luxmed.urls import VISIT_TERMS_VALUATION_URL
+from luxmed.utils import year_ago
 
 
 @unique
@@ -119,15 +120,14 @@ class LuxMedVisits:
         """Historic doctor appointments.
 
         Args:
-            from_date (date, optional): Show past appointments since this date.
-                Defaults to a year ago (leap/366 days).
+            from_date (date, optional): Show past appointments since this date. Defaults to a year ago.
             to_date (date, optional): Show past appointments until this date. Defaults to the current date.
 
         Returns:
             Historic appointments.
         """
         if not from_date:
-            from_date = str(date.today() - timedelta(days=366))
+            from_date = str(year_ago())
         if not to_date:
             to_date = str(date.today())
         return self._transport.get(HISTORY_VISITS_URL, params=filter_args(

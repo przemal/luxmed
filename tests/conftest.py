@@ -4,7 +4,6 @@ import re
 from copy import deepcopy
 from datetime import date
 from datetime import datetime
-from datetime import timedelta
 from datetime import timezone
 from itertools import chain
 from os import environ
@@ -23,6 +22,7 @@ from luxmed.urls import VISIT_RESERVE_TEMPORARY_URL
 from luxmed.urls import VISIT_RESERVE_URL
 from luxmed.urls import VISIT_TERMS_URL
 from luxmed.urls import VISIT_TERMS_VALUATION_URL
+from luxmed.utils import year_ago as _year_ago
 
 
 DATE_TIME = datetime(year=2012, month=12, day=12, hour=12, minute=12, second=12, tzinfo=timezone.utc)
@@ -265,7 +265,7 @@ def today():
 
 @pytest.fixture(scope='session')
 def year_ago(today):
-    return today - timedelta(days=365)
+    return _year_ago(today)
 
 
 @pytest.fixture(scope='session')
