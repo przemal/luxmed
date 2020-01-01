@@ -249,18 +249,13 @@ def client_uuid():
 
 
 @pytest.fixture(scope='session')
-def from_date():
-    return date(year=2019, month=8, day=22)
-
-
-@pytest.fixture(scope='session')
-def to_date():
-    return date(year=2019, month=8, day=28)
-
-
-@pytest.fixture(scope='session')
 def today():
     return date(year=2019, month=8, day=22)
+
+
+@pytest.fixture(scope='session')
+def next_week():
+    return date(year=2019, month=8, day=28)
 
 
 @pytest.fixture(scope='session')
