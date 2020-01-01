@@ -59,8 +59,11 @@ class LuxMedTransport:
         except Timeout as error:
             raise LuxMedTimeoutError('Request timed out') from error
         try:
-            return response.json()
-        except JSONDecodeError:
+            if 'application/json' in response.headers['Content-Type']:
+                return response.json()
+            else:
+                return response.content
+        except KeyError:  # no content
             return
 
     def authenticate(self):
