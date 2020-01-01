@@ -127,9 +127,9 @@ class LuxMedVisits:
             Historic appointments.
         """
         if not from_date:
-            from_date = str(year_ago())
+            from_date = year_ago()
         if not to_date:
-            to_date = str(date.today())
+            to_date = date.today()
         return self._transport.get(HISTORY_VISITS_URL, params=filter_args(
             from_date=from_date, to_date=to_date))
 
