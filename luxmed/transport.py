@@ -40,7 +40,7 @@ class LuxMedTransport:
         self._session.headers = {
             'x-api-client-identifier': 'Android',
             'Accept-Language': self.lang_code,
-            'Custom-User-Agent': 'Patient Portal; 3.17.0; '
+            'Custom-User-Agent': 'Patient Portal; 4.17.0; '
                                  f'{self.app_uuid}; '
                                  'Android; 28; generic_x86 Android SDK built for x86',
             'Host': HOST,
